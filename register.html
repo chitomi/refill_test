@@ -341,6 +341,184 @@ textarea{resize:vertical;min-height:80px;}
   .field-row{grid-template-columns:1fr;}
   .coord-display{grid-template-columns:1fr;}
 }
+
+/* ─── モード切替バナー ─── */
+.mode-banner {
+  margin-bottom: 20px;
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  display: none;
+}
+.mode-banner.edit-mode {
+  background: linear-gradient(135deg,#fff3cd,#ffe8a0);
+  border: 2px solid var(--gold);
+  color: #7a5000;
+}
+.mode-banner.delete-mode {
+  background: linear-gradient(135deg,#fff0f0,#ffd0d0);
+  border: 2px solid var(--accent);
+  color: #8a0000;
+}
+
+/* ─── スポット一覧パネル（ログイン後に表示）─── */
+.spot-search-panel {
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+  border: 1px solid var(--water-pale);
+}
+.spot-search-panel h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--water-deep);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.spot-search-box {
+  position: relative;
+  margin-bottom: 12px;
+}
+.spot-search-box input {
+  width: 100%;
+  padding: 10px 38px 10px 13px;
+  border: 1.5px solid var(--water-light);
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--water-foam);
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color .2s;
+}
+.spot-search-box input:focus { border-color: var(--water-mid); background: white; }
+.spot-search-box .s-icon { position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--text-light); }
+
+.spot-list-scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid var(--water-pale);
+  border-radius: var(--r-sm);
+}
+.spot-list-scroll::-webkit-scrollbar { width: 4px; }
+.spot-list-scroll::-webkit-scrollbar-thumb { background: var(--water-light); border-radius: 2px; }
+
+.spot-list-item {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--water-pale);
+  cursor: pointer;
+  transition: background .15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.spot-list-item:last-child { border-bottom: none; }
+.spot-list-item:hover { background: var(--water-foam); }
+.spot-list-item.review-due { background: #fff8e0; }
+.spot-list-item.review-due:hover { background: #fff0b0; }
+.spot-item-icon { font-size: 18px; flex-shrink:0; }
+.spot-item-body { flex:1; min-width:0; }
+.spot-item-name { font-size: 13px; font-weight: 700; color: var(--text-dark); white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.spot-item-meta { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+.spot-item-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.badge-review { background:#fff0a0;color:#8a6000;border:1px solid #ffd700; }
+.badge-normal { background:var(--water-pale);color:var(--water-deep);border:1px solid var(--water-light); }
+
+.new-spot-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--water-foam);
+  border: 2px dashed var(--water-mid);
+  border-radius: var(--r-sm);
+  color: var(--water-deep);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: all .2s;
+}
+.new-spot-btn:hover { background: var(--water-pale); }
+
+/* ─── 削除ボタン ─── */
+.delete-zone {
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+  border: 2px solid var(--accent);
+  display: none;
+}
+.delete-zone-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.delete-zone p {
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+.delete-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg,#ff6b6b,#ee3355);
+  color: white;
+  border: none;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(255,80,80,.35);
+}
+.delete-btn:hover { transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,80,80,.45); }
+.delete-btn:disabled { opacity:.6;transform:none;cursor:not-allowed; }
+
+/* ─── ボタン列（更新 / 新規登録）─── */
+.action-btns { display:flex; gap:10px; }
+.action-btns .submit-btn { flex:1; }
+.cancel-edit-btn {
+  padding: 15px 18px;
+  background: var(--water-foam);
+  border: 2px solid var(--water-light);
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.cancel-edit-btn:hover { background:var(--water-pale);border-color:var(--water-mid); }
+
 </style>
 </head>
 <body>
@@ -365,10 +543,28 @@ textarea{resize:vertical;min-height:80px;}
       <div class="main">💧 Refillぐんま</div>
       <div class="sub">スポット登録</div>
     </div>
-    <a href="index.html" class="btn-back">← マップへ戻る</a>
+    <a href="map.html" class="btn-back">← マップへ戻る</a>
   </header>
 
   <div class="form-container">
+
+    <!-- スポット一覧パネル（ログイン後に表示、スポット選択で編集モードへ） -->
+    <div class="spot-search-panel" id="spotSearchPanel">
+      <h3>🔍 既存スポットを編集・確認する</h3>
+      <div class="spot-search-box">
+        <input type="text" id="spotSearchInput" placeholder="スポット名・住所で絞り込み…" oninput="filterSpotList(this.value)">
+        <span class="s-icon">🔍</span>
+      </div>
+      <div class="spot-list-scroll" id="spotListScroll">
+        <div style="padding:20px;text-align:center;color:var(--text-light);font-size:13px;">スポット一覧を読み込み中…</div>
+      </div>
+      <button class="new-spot-btn" onclick="startNewMode()">＋ 新しいスポットを登録する</button>
+    </div>
+
+    <!-- モード切替バナー -->
+    <div class="mode-banner edit-mode" id="editBanner">
+      ✏️ <span id="editBannerText">編集モード</span>
+    </div>
 
     <!-- CATEGORY -->
     <div class="form-card">
@@ -498,10 +694,28 @@ textarea{resize:vertical;min-height:80px;}
       </div>
     </div>
 
-    <!-- SUBMIT -->
-    <button class="submit-btn" id="submitBtn" onclick="submitForm()">
-      💧 スポットを登録する
-    </button>
+    <!-- 削除ゾーン（編集モードのみ表示） -->
+    <div class="delete-zone" id="deleteZone">
+      <div class="delete-zone-title">🗑️ このスポットを削除申請する</div>
+      <p>
+        給水スポットや店舗が無くなっている場合は、スプレッドシートに削除フラグを立てます。<br>
+        その後、<strong>RefillJapanの担当者に削除申請</strong>を行ってください。<br>
+        ※ データはスプレッドシートに記録として残ります（物理削除はしません）。
+      </p>
+      <button class="delete-btn" id="deleteBtn" onclick="confirmDelete()">
+        🗑️ 削除フラグを立てる（RefillJapanへ削除申請）
+      </button>
+    </div>
+
+    <!-- SUBMIT / UPDATE ボタン -->
+    <div class="action-btns">
+      <button class="cancel-edit-btn" id="cancelEditBtn" onclick="cancelEdit()" style="display:none">
+        ✕ キャンセル
+      </button>
+      <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+        💧 スポットを登録する
+      </button>
+    </div>
 
   </div>
 </div>
@@ -515,7 +729,7 @@ textarea{resize:vertical;min-height:80px;}
 const CONFIG = {
   // ★ GASデプロイ後にここだけ設定してください ★
   // パスワードはここに書かない → GAS側で管理（GitHub公開しても安全）
-  GAS_URL: 'https://script.google.com/macros/s/AKfycbz1zxqq0YxZHwJW2kPcfAQt0eS4U1QP1D3B0v_slmxwwpGa2M0HeVMeETPE40kvls6Taw/exec',
+  GAS_URL: 'https://script.google.com/macros/s/AKfycbwvOXbUtQh7oYJjKkKp5HuwNQZ2mDZzVnw9zOQG_nf4LDXrOAI0lDoQVL0yDZ14Ewt_xw/exec',
 
   // 群馬県デフォルト座標
   DEFAULT_LAT: 36.39,
@@ -555,6 +769,7 @@ async function checkPW() {
       document.getElementById('authScreen').style.display = 'none';
       document.getElementById('mainContent').style.display = 'block';
       initLocationMap();
+      loadSpotList();     // ★ ログイン後にスポット一覧を取得して表示
     } else {
       errEl.textContent = 'パスワードが違います。';
       document.getElementById('pwInput').value = '';
@@ -666,31 +881,234 @@ async function geocodeAddress() {
   try {
     // 東京大学空間情報科学研究センター アドレスマッチングAPI
     // CORSの制約上、GASプロキシ経由で呼び出す
-    const url = `${CONFIG.GAS_URL}?action=geocode&address=${encodeURIComponent(addr)}`;
-    const res  = await fetch(url);
+    const url = CONFIG.GAS_URL + '?action=geocode&address=' + encodeURIComponent(addr);
+    const res  = await fetch(url, { method: 'GET', mode: 'cors' });
+
+    if (!res.ok) throw new Error('通信エラー: ' + res.status);
+
     const data = await res.json();
 
-    if (data.lat && data.lng) {
+    if (data.status === 'ok' && data.lat && data.lng) {
       setMapMarker(data.lat, data.lng);
       locMap.setView([data.lat, data.lng], 16);
-      statusEl.textContent = `✅ 住所から座標を取得しました (精度: ${data.score || 'OK'})`;
+      const src = data.source ? `（${data.source}）` : '';
+      statusEl.textContent = `✅ 座標を取得しました ${src}`;
+      if (data.normalized) {
+        statusEl.textContent += ` 正規化住所: ${data.normalized}`;
+      }
       statusEl.className = 'geo-status ok';
     } else {
-      throw new Error('座標が取得できませんでした');
+      throw new Error(data.message || '座標が取得できませんでした');
     }
   } catch(e) {
-    statusEl.textContent = '⚠️ 座標の自動取得に失敗しました。地図で手動指定してください。';
+    statusEl.textContent = '⚠️ ' + e.message + ' 地図をクリックして手動で指定してください。';
     statusEl.className = 'geo-status err';
   }
 }
 
-// ══════════════════════════════
-//  フォーム送信 → GAS (GETパラメータ方式)
-//  ★ POSTを使わない理由 ★
-//  POST + Content-Type:application/json は CORSプリフライト(OPTIONS)を
-//  発生させるが、GASはOPTIONSに応答できずエラーになる。
-//  → すべてGETのURLパラメータで送ることで回避する。
-// ══════════════════════════════
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  モード管理
+//  mode: 'new'（新規登録） | 'edit'（既存スポット編集）
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+let editMode   = 'new';   // 'new' or 'edit'
+let editSpotId = null;    // 編集中のスポットID
+let allSpotsCache = [];   // スポット一覧キャッシュ
+
+// ログイン後にスポット一覧を取得してサイドパネルに表示
+async function loadSpotList() {
+  try {
+    const res  = await fetch(CONFIG.GAS_URL + '?action=getSpots', { method:'GET', mode:'cors' });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      allSpotsCache = data.spots || [];
+      renderSpotList(allSpotsCache);
+    }
+  } catch(e) {
+    document.getElementById('spotListScroll').innerHTML =
+      '<div style="padding:16px;text-align:center;color:var(--accent);font-size:12px;">⚠️ 一覧の取得に失敗しました</div>';
+  }
+}
+
+// スポット一覧をレンダリング
+function renderSpotList(spots) {
+  const el = document.getElementById('spotListScroll');
+  const REVIEW_YEARS = 3;
+  const now = new Date();
+
+  const needsReview = s => {
+    // 再調査日があればそれを基準、なければ登録日を基準
+    const base = s.reviewed || s.registered;
+    if (!base) return false;
+    const d = new Date(base);
+    if (isNaN(d)) return false;
+    const limit = new Date(d);
+    limit.setFullYear(limit.getFullYear() + REVIEW_YEARS);
+    return now >= limit;
+  };
+
+  // 再調査が必要なものを上に
+  const sorted = [...spots].sort((a, b) => {
+    const ar = needsReview(a) ? 0 : 1;
+    const br = needsReview(b) ? 0 : 1;
+    return ar - br;
+  });
+
+  if (sorted.length === 0) {
+    el.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-light);font-size:12px;">登録済みスポットはありません</div>';
+    return;
+  }
+
+  const catIcon = { public:'🚰', shop:'🏪', byoc:'🧴' };
+  el.innerHTML = sorted.map(s => {
+    const rev = needsReview(s);
+    const baseDate = s.reviewed || s.registered || '';
+    return `<div class="spot-list-item ${rev?'review-due':''}" onclick="loadSpotToForm('${s.id}')">
+      <span class="spot-item-icon">${catIcon[s.category]||'💧'}</span>
+      <div class="spot-item-body">
+        <div class="spot-item-name">${s.name}</div>
+        <div class="spot-item-meta">${s.address || ''}${baseDate ? ' ｜ 基準日:' + baseDate : ''}</div>
+      </div>
+      <span class="spot-item-badge ${rev?'badge-review':'badge-normal'}">${rev?'⚠️ 要確認':'正常'}</span>
+    </div>`;
+  }).join('');
+}
+
+// キーワードでフィルタ
+function filterSpotList(q) {
+  const filtered = q.trim()
+    ? allSpotsCache.filter(s =>
+        s.name.includes(q) || (s.address||'').includes(q)
+      )
+    : allSpotsCache;
+  renderSpotList(filtered);
+}
+
+// スポットを選択してフォームに読み込み（編集モード）
+function loadSpotToForm(id) {
+  const spot = allSpotsCache.find(s => s.id === id);
+  if (!spot) { showToast('スポットデータが見つかりません', 'error'); return; }
+
+  editMode   = 'edit';
+  editSpotId = id;
+
+  // フォームに値を流し込み
+  selectCat(spot.category || 'public');
+  document.getElementById('f_name').value        = spot.name || '';
+  document.getElementById('f_water_type').value  = spot.water_type || '';
+  document.getElementById('f_description').value = spot.description || '';
+  document.getElementById('f_address').value     = spot.address || '';
+  document.getElementById('f_lat').value         = spot.lat || '';
+  document.getElementById('f_lng').value         = spot.lng || '';
+  document.getElementById('f_phone').value       = spot.phone || '';
+  document.getElementById('f_email').value       = spot.email || '';
+
+  // 営業時間を開始・終了に分解
+  const hours = spot.hours || '';
+  const hParts = hours.split('〜');
+  document.getElementById('f_open').value  = hParts[0] !== '終日' ? hParts[0] : '';
+  document.getElementById('f_close').value = hParts[1] || '';
+
+  // 定休日
+  document.querySelectorAll('#closedDays .day-btn').forEach(b => {
+    b.classList.toggle('active', (spot.closed_days||'').includes(b.dataset.day));
+  });
+
+  // 地図マーカー
+  if (spot.lat && spot.lng && locMap) {
+    setMapMarker(parseFloat(spot.lat), parseFloat(spot.lng));
+    locMap.setView([parseFloat(spot.lat), parseFloat(spot.lng)], 15);
+  }
+
+  // UIを編集モードに切り替え
+  document.getElementById('editBanner').style.display  = 'flex';
+  document.getElementById('editBannerText').textContent =
+    `「${spot.name}」を編集中`;
+  document.getElementById('deleteZone').style.display   = 'block';
+  document.getElementById('cancelEditBtn').style.display = '';
+  document.getElementById('submitBtn').innerHTML         = '✏️ 情報を更新する';
+
+  // フォームまでスクロール
+  document.getElementById('editBanner').scrollIntoView({ behavior:'smooth', block:'start' });
+  showToast(`✏️ 「${spot.name}」を読み込みました`, 'success');
+}
+
+// 新規登録モードに切り替え
+function startNewMode() {
+  editMode   = 'new';
+  editSpotId = null;
+  resetForm();
+  document.getElementById('editBanner').style.display   = 'none';
+  document.getElementById('deleteZone').style.display   = 'none';
+  document.getElementById('cancelEditBtn').style.display = 'none';
+  document.getElementById('submitBtn').innerHTML         = '💧 スポットを登録する';
+  document.getElementById('editBanner').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// 編集キャンセル
+function cancelEdit() {
+  startNewMode();
+  showToast('編集をキャンセルしました', '');
+}
+
+// フォームをリセット
+function resetForm() {
+  selectedCategory = '';
+  document.querySelectorAll('.cat-btn').forEach(b => b.className = 'cat-btn');
+  document.getElementById('shopFields').style.display = 'none';
+  ['f_name','f_water_type','f_description','f_address','f_open','f_close',
+   'f_phone','f_email','f_lat','f_lng'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.querySelectorAll('#closedDays .day-btn').forEach(b => b.classList.remove('active'));
+  if (locMarker && locMap) { locMap.removeLayer(locMarker); locMarker = null; }
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  削除フラグを立てる
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+async function confirmDelete() {
+  if (!editSpotId) return;
+  const spot = allSpotsCache.find(s => s.id === editSpotId);
+  const name = spot ? spot.name : editSpotId;
+
+  if (!confirm(`「${name}」に削除フラグを立てます。
+
+その後、RefillJapanの担当者に削除申請を行ってください。
+
+よろしいですか？`)) return;
+
+  const btn = document.getElementById('deleteBtn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 処理中…';
+
+  const params = new URLSearchParams({
+    action: 'deleteSpot',
+    token:  sessionStorage.getItem('refill_auth') || '',
+    id:     editSpotId,
+  });
+
+  try {
+    const res  = await fetch(CONFIG.GAS_URL + '?' + params.toString(), { method:'GET', mode:'cors' });
+    const data = await res.json();
+    if (data.status === 'ok') {
+      showToast('🗑️ 削除フラグを立てました。RefillJapanに削除申請を行ってください。', 'success');
+      await loadSpotList();
+      setTimeout(() => startNewMode(), 2500);
+    } else {
+      throw new Error(data.message || '削除フラグの設定に失敗しました');
+    }
+  } catch(e) {
+    showToast('❌ エラー: ' + e.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = '🗑️ 削除フラグを立てる（RefillJapanへ削除申請）';
+  }
+}
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//  フォーム送信（新規登録 / 更新 を自動判別）
+//  ★ POSTを使わない → GETパラメータ方式でCORSプリフライト回避 ★
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 async function submitForm() {
   // バリデーション
   const errors = [];
@@ -699,7 +1117,6 @@ async function submitForm() {
   if (!document.getElementById('f_water_type').value)      errors.push('お水の提供方法を選択してください');
   if (!document.getElementById('f_address').value.trim())  errors.push('住所を入力してください');
   if (!document.getElementById('f_lat').value)             errors.push('地図で位置を指定してください');
-
   if (errors.length) { showToast('⚠️ ' + errors[0], 'error'); return; }
 
   const btn = document.getElementById('submitBtn');
@@ -712,11 +1129,14 @@ async function submitForm() {
     ? (closeVal ? openVal + '〜' + closeVal : openVal + '〜')
     : '終日';
 
-  // GETパラメータとしてデータを組み立てる
+  // 新規登録 or 更新 の判別
+  const isEdit  = (editMode === 'edit' && editSpotId);
+  const action  = isEdit ? 'updateSpot' : 'addSpot';
+
   const params = new URLSearchParams({
-    action:      'addSpot',
-    token:       sessionStorage.getItem('refill_auth') || '',  // GAS側で再検証
-    id:          String(Date.now()),
+    action:      action,
+    token:       sessionStorage.getItem('refill_auth') || '',
+    id:          isEdit ? editSpotId : String(Date.now()),
     name:        document.getElementById('f_name').value.trim(),
     category:    selectedCategory,
     address:     document.getElementById('f_address').value.trim(),
@@ -729,30 +1149,34 @@ async function submitForm() {
     phone:       document.getElementById('f_phone').value.trim(),
     email:       document.getElementById('f_email').value.trim(),
     byoc:        String(selectedCategory === 'byoc'),
-    registered:  new Date().toISOString().slice(0, 10),
+    registered:  isEdit ? '' : new Date().toISOString().slice(0, 10),
   });
 
-  const url = CONFIG.GAS_URL + '?' + params.toString();
-
   try {
-    // GETリクエスト（no-corsではなくcors、GASはGETならCORSヘッダーを返す）
-    const res = await fetch(url, { method: 'GET', mode: 'cors' });
-
+    const res  = await fetch(CONFIG.GAS_URL + '?' + params.toString(), { method:'GET', mode:'cors' });
     if (!res.ok) throw new Error('HTTPエラー: ' + res.status);
-
     const data = await res.json();
 
     if (data.status === 'ok') {
-      showToast('✅ ' + (data.message || 'スポットを登録しました！'), 'success');
-      setTimeout(() => { window.location.href = 'map.html'; }, 2200);
+      const msg = isEdit
+        ? `✅ 更新しました（再調査日: ${data.reviewed || '本日'}）`
+        : '✅ 新規スポットを登録しました！';
+      showToast(msg, 'success');
+      await loadSpotList();          // 一覧を更新
+      setTimeout(() => {
+        if (isEdit) {
+          startNewMode();             // 編集完了→新規モードへ
+        } else {
+          window.location.href = 'map.html';
+        }
+      }, 2200);
     } else {
-      throw new Error(data.message || '登録に失敗しました');
+      throw new Error(data.message || (isEdit ? '更新に失敗しました' : '登録に失敗しました'));
     }
   } catch (e) {
-    console.error('送信エラー:', e);
     showToast('❌ 送信エラー: ' + e.message, 'error');
     btn.disabled = false;
-    btn.innerHTML = '💧 スポットを登録する';
+    btn.innerHTML = isEdit ? '✏️ 情報を更新する' : '💧 スポットを登録する';
   }
 }
 
